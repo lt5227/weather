@@ -1,0 +1,37 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.13.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.stackstone'
+version = '0.0.1'
+sourceCompatibility = '11'
+
+configurations {
+    developmentOnly
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+//	mavenCentral()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies {
+    implementation group: 'cn.hutool', name: 'hutool-all', version: '5.6.1'
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
