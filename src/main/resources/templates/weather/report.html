@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/lib/bootstrap-4.6.0/css/bootstrap.css}">
+    <title>StackStone-天气预报</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h3 th:text="${reportModel.title}">StackStone</h3>
+        <select id="selectCityId">
+            <option th:></option>
+        </select>
+    </div>
+</div>
+</body>
+</html>

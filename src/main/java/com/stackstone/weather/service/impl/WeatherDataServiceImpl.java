@@ -63,6 +63,25 @@ public class WeatherDataServiceImpl implements WeatherDataService {
         return this.doGetWeatherData(uri);
     }
 
+    @Override
+    public void syncDataByCityId(String cityId) {
+        String uri = WEATHER_API + "?citykey=" + cityId;
+        this.saveWeatherData(uri);
+    }
+
+    private void saveWeatherData(String uri) {
+        ValueOperations<String, String> ops = this.stringRedisTemplate.opsForValue();
+        String strBody = null;
+        ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
+        int successStatusCode = 200;
+        if (response.getStatusCodeValue() == successStatusCode) {
+            strBody = response.getBody();
+        }
+        if (strBody != null) {
+            ops.set(uri, strBody, TIME_OUT, TimeUnit.SECONDS);
+        }
+    }
+
     private WeatherResponse doGetWeatherData(String uri) {
         ValueOperations<String, String> ops = this.stringRedisTemplate.opsForValue();
         // 将调用的URI作为缓存的Key
@@ -74,7 +93,7 @@ public class WeatherDataServiceImpl implements WeatherDataService {
             if (response.getStatusCodeValue() == successStatusCode) {
                 strBody = response.getBody();
             }
-            if (strBody != null){
+            if (strBody != null) {
                 ops.set(uri, strBody, TIME_OUT, TimeUnit.SECONDS);
             }
         } else {

@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @date 2021/3/19 17:51
  * @since 1.0.0
  */
-@XmlRootElement
+@XmlRootElement(name = "d")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Data
 public class City {
