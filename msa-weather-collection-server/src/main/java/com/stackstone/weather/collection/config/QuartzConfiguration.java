@@ -1,6 +1,6 @@
-package com.stackstone.weather.config;
+package com.stackstone.weather.collection.config;
 
-import com.stackstone.weather.job.WeatherDataSyncJob;
+import com.stackstone.weather.collection.job.WeatherDataSyncJob;
 import org.quartz.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

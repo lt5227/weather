@@ -12,10 +12,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 1.0.0
  */
 @SpringBootApplication
-public class WeatherApplication {
+public class RootApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WeatherApplication.class, args);
+        SpringApplication.run(RootApplication.class, args);
     }
 
 }
