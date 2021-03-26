@@ -28,7 +28,7 @@ public class WeatherDataCollectionServiceImpl implements WeatherDataCollectionSe
     /**
      * 天气API地址
      */
-    private static final String WEATHER_API = "http://wthrcdn.etouch.cn/weathermini";
+    private static final String WEATHER_API = "http://wthrcdn.etouch.cn/weather_mini";
 
     /**
      * 缓存超时时间
