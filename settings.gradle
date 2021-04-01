@@ -1,3 +1,5 @@
 rootProject.name = 'weather'
 include 'msa-weather-collection-server'
+include 'msa-weather-data-server'
+include 'msa-weather-report-server'
 

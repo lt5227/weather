@@ -1,0 +1,5 @@
+spring:
+  redis:
+    host: localhost
+    password: lt5227
+    database: 5
