@@ -1,5 +1,6 @@
 package com.stackstone.weather.report.controller;
 
+import com.stackstone.weather.report.client.CityClient;
 import com.stackstone.weather.report.service.WeatherReportService;
 import com.stackstone.weather.report.vo.City;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,26 +28,21 @@ public class WeatherReportController {
 
     private final WeatherReportService weatherReportService;
 
-    public WeatherReportController(WeatherReportService weatherReportService) {
+    private final CityClient cityClient;
+
+    public WeatherReportController(WeatherReportService weatherReportService,
+                                   CityClient cityClient) {
         this.weatherReportService = weatherReportService;
+        this.cityClient = cityClient;
     }
 
     @GetMapping("/cityId/{cityId}")
     public ModelAndView getReportByCityId(@PathVariable String cityId, Model model) {
-        // TODO 改为由城市数据API微服务来提供数据
+        // 由城市数据API微服务来提供数据
         List<City> cityList;
         try {
-            // TODO 调用城市数据API
-            cityList = new ArrayList<>();
-            City city = new City();
-            city.setCityId("101280601");
-            city.setCityName("深圳");
-            cityList.add(city);
-
-            city = new City();
-            city.setCityId("101280301");
-            city.setCityName("惠州");
-            cityList.add(city);
+            // 调用城市数据API
+            cityList = cityClient.listCity();
         } catch (Exception e) {
             log.error("获取城市信息异常！", e);
             throw new RuntimeException("获取城市信息异常！", e);

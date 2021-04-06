@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: micro-weather-eureka-client-zuul
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+zuul:
+  routes:
+    hi:
+# 为要拦截请求的路径
+      path: /hi/**
+# 为要拦截请求的路径所要映射的服务。本例将所有/hi下的请求，都转发到micro-weather-eureka-client应用中去
+      serviceId: micro-weather-eureka-client

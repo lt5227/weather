@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.stackstone.weather'
+group 'com.stackstone.weather.client.zuul'
 version '1.0.0'
 
 repositories {
@@ -10,12 +10,11 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    // 添加Spring Cloud Starter OpenFeign依赖
-    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    // 添加Spring Cloud Starter Netflix Zuul依赖
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
 }
 
 test {

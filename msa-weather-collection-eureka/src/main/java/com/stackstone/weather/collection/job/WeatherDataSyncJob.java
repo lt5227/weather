@@ -1,5 +1,6 @@
 package com.stackstone.weather.collection.job;
 
+import com.stackstone.weather.collection.client.CityClient;
 import com.stackstone.weather.collection.service.WeatherDataCollectionService;
 import com.stackstone.weather.collection.vo.City;
 import lombok.extern.slf4j.Slf4j;
@@ -24,21 +25,22 @@ public class WeatherDataSyncJob extends QuartzJobBean {
 
     private final WeatherDataCollectionService weatherDataCollectionService;
 
-    public WeatherDataSyncJob(WeatherDataCollectionService weatherDataCollectionService) {
+    private final CityClient cityClient;
+
+    public WeatherDataSyncJob(WeatherDataCollectionService weatherDataCollectionService,
+                              CityClient cityClient) {
         this.weatherDataCollectionService = weatherDataCollectionService;
+        this.cityClient = cityClient;
     }
 
     @Override
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
         log.info("Start 天气数据同步任务");
-        // TODO 改为由城市数据API微服务来提供数据
-        List<City> cityList = null;
+        // 由城市数据API微服务来提供数据
+        List<City> cityList;
         try {
-            // TODO 调用城市数据API
-            cityList = new ArrayList<>();
-            City city = new City();
-            city.setCityId("101280601");
-            cityList.add(city);
+            // 调用城市数据API
+            cityList = cityClient.listCity();
         } catch (Exception e) {
             log.error("获取城市信息异常!", e);
             throw new RuntimeException("获取城市信息异常!", e);

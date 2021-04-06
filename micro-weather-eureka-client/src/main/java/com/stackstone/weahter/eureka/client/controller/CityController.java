@@ -27,15 +27,13 @@ public class CityController {
 
     @GetMapping("/cities1")
     public String listCity1() {
-        String body = restTemplate
+        return restTemplate
                 .getForEntity("http://msa-weather-city-eureka/cities", String.class)
                 .getBody();
-        return body;
     }
 
     @GetMapping("/cities2")
     public String listCity2() {
-        String body = cityClient.listCity();
-        return body;
+        return cityClient.listCity();
     }
 }

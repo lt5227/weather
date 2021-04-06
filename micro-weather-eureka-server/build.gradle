@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'com.stackstone.weather.eureka.server'
+version '1.0.0'
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}

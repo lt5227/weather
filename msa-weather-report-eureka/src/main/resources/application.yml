@@ -12,3 +12,12 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+feign:
+  client:
+    config:
+      feignName:
+        # 连接超时时间
+        connectTimeout: 5000
+        # 读数据的超时时间
+        readTimeout: 5000

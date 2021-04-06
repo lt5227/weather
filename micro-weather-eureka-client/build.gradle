@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.stackstone.weather'
+group 'com.stackstone.weather.eureka.client'
 version '1.0.0'
 
 repositories {
@@ -10,9 +10,11 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // 添加Spring Cloud Starter Netflix Ribbon依赖
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-ribbon'
 
     // 添加Spring Cloud Starter OpenFeign依赖
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
