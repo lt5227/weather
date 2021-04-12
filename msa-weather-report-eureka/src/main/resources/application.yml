@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8087
 
 spring:
   # 热部署静态文件
@@ -21,3 +21,5 @@ feign:
         connectTimeout: 5000
         # 读数据的超时时间
         readTimeout: 5000
+  hystrix:
+    enabled: true

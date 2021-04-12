@@ -1,5 +1,6 @@
 package com.stackstone.weahter.eureka.client.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.stackstone.weahter.eureka.client.service.CityClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +34,12 @@ public class CityController {
     }
 
     @GetMapping("/cities2")
+    @HystrixCommand(fallbackMethod = "defaultCities")
     public String listCity2() {
         return cityClient.listCity();
+    }
+
+    public String defaultCities() {
+        return "城市数据API服务暂时不可用!";
     }
 }

@@ -1,9 +1,9 @@
 server:
-  port: 8081
+  port: 8089
 
 spring:
   application:
-    name: micro-weather-eureka-client-zuul
+    name: micro-weather-client-zuul
 
 eureka:
   client:

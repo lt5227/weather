@@ -1,9 +1,11 @@
 package com.stackstone.weather.report.controller;
 
 import com.stackstone.weather.report.client.CityClient;
+import com.stackstone.weather.report.client.DataClient;
 import com.stackstone.weather.report.service.WeatherReportService;
 import com.stackstone.weather.report.vo.City;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,10 +32,13 @@ public class WeatherReportController {
 
     private final CityClient cityClient;
 
+    private final DataClient dataClient;
+
     public WeatherReportController(WeatherReportService weatherReportService,
-                                   CityClient cityClient) {
+                                   CityClient cityClient, DataClient dataClient) {
         this.weatherReportService = weatherReportService;
         this.cityClient = cityClient;
+        this.dataClient = dataClient;
     }
 
     @GetMapping("/cityId/{cityId}")
@@ -42,7 +47,7 @@ public class WeatherReportController {
         List<City> cityList;
         try {
             // 调用城市数据API
-            cityList = cityClient.listCity();
+            cityList = dataClient.listCity();
         } catch (Exception e) {
             log.error("获取城市信息异常！", e);
             throw new RuntimeException("获取城市信息异常！", e);

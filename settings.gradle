@@ -6,4 +6,7 @@ include 'msa-weather-city-eureka'
 include 'micro-weather-eureka-server'
 include 'micro-weather-eureka-client'
 include 'micro-weather-eureka-client-zuul'
+include 'msa-weather-eureka-client-zuul'
+include 'micro-weather-config-server'
+include 'micro-weather-config-client'
 

@@ -18,6 +18,9 @@ dependencies {
 
     // 添加Spring Cloud Starter OpenFeign依赖
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
+    // 添加 Spring Cloud Starter Netflix Hystrix依赖
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
 }
 
 test {

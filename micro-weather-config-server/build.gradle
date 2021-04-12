@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group 'com.stackstone.weather.config.server'
+version '1.0.0'
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // 添加 Spring Cloud Config Server 依赖
+    implementation 'org.springframework.cloud:spring-cloud-config-server'
+
+    // 添加 Spring Cloud Starter Bus 依赖
+    implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
+    // 添加Spring Cloud Config Monitor 依赖
+    implementation 'org.springframework.cloud:spring-cloud-config-monitor'
+}
+
+test {
+    useJUnitPlatform()
+}

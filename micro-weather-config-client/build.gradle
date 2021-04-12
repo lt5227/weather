@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.stackstone.weather.zuul'
+group 'com.stackstone.weather.config.client'
 version '1.0.0'
 
 repositories {
@@ -13,8 +13,11 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    // 添加Spring Cloud Starter Netflix Zuul依赖
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
+    // 添加 Spring Cloud Config Server 依赖
+    implementation 'org.springframework.cloud:spring-cloud-config-client'
+
+    // 添加 Spring Cloud Starter Bus 依赖
+    implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
 }
 
 test {

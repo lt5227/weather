@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.stackstone.weather.zuul'
+group 'com.stackstone.weather.client.zuul'
 version '1.0.0'
 
 repositories {
